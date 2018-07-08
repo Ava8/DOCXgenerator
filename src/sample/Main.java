@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.apache.log4j.BasicConfigurator;
 
 public class Main extends Application {
 
@@ -14,7 +15,7 @@ public class Main extends Application {
         primaryStage.setTitle("App");
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
-
+        BasicConfigurator.configure();
     }
     //testing commits
 

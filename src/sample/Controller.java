@@ -2,9 +2,10 @@ package sample;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
 
 public class Controller {
-
+    private DataModel model = new DataModel();
     // list 1 elements
 
     @FXML
@@ -75,11 +76,28 @@ public class Controller {
         done1.setOnAction(event -> {
             String fio = this.fio_field.getText();
             String group = this.group_field.getText();
+            model.list.add(new Student(fio,group));
 
-            DataModel.list.add(new Student(fio,group));
-
-            int count = DataModel.list.size();
+            int count = model.list.size();
+            
             this.student_count.setText(Integer.toString(count));
+        });
+
+        create_docx.setOnAction(event -> {
+            //TODO: put code in try to another thread
+            try{
+                WordprocessingMLPackage wordMLPackage;
+                wordMLPackage = WordprocessingMLPackage.createPackage();
+                for (int i = 0; i < model.list.size(); i ++){
+                    
+                }
+                for (Student s:model.list) {
+                    wordMLPackage.getMainDocumentPart().addParagraphOfText("Фамилия: " + s.getFio() + " Группа: " + s.getGroup() + "\n");
+                }
+                wordMLPackage.save(new java.io.File(System.getProperty("user.home") + "/test.docx"));
+            } catch (Exception e){
+
+            }
         });
 
 //        done3.setOnAction(event -> {
