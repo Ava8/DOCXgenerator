@@ -77,21 +77,18 @@ public class Controller {
             String fio = this.fio_field.getText();
             String group = this.group_field.getText();
             model.list.add(new Student(fio,group));
-
-            int count = model.list.size();
-            
-            this.student_count.setText(Integer.toString(count));
+            this.student_count.setText(Integer.toString(model.list.size()));
         });
 
         create_docx.setOnAction(event -> {
             //TODO: put code in try to another thread
-            try{
+            try {
                 WordprocessingMLPackage wordMLPackage;
                 wordMLPackage = WordprocessingMLPackage.createPackage();
                 for (Student s:model.list) {
                     wordMLPackage.getMainDocumentPart().addParagraphOfText("Фамилия: " + s.getFio() + " Группа: " + s.getGroup() + "\n");
                 }
-                wordMLPackage.save(new java.io.File(System.getProperty("user.home") + "/test.docx"));
+                wordMLPackage.save(new java.io.File(System.getProperty("user.home") + "/test.doc"));
             } catch (Exception e){
 
             }
