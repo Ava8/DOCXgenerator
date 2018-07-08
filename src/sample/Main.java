@@ -14,6 +14,7 @@ public class Main extends Application {
         primaryStage.setTitle("App");
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
+
     }
     //testing commits
 
