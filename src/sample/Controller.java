@@ -5,7 +5,9 @@ import javafx.scene.control.*;
 import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
 
 public class Controller {
+
     private DataModel model = new DataModel();
+
     // list 1 elements
 
     @FXML
@@ -76,34 +78,22 @@ public class Controller {
         done1.setOnAction(event -> {
             String fio = this.fio_field.getText();
             String group = this.group_field.getText();
+
             model.list.add(new Student(fio,group));
             this.student_count.setText(Integer.toString(model.list.size()));
         });
 
         create_docx.setOnAction(event -> {
-            //TODO: put code in try to another thread
             try {
                 WordprocessingMLPackage wordMLPackage;
                 wordMLPackage = WordprocessingMLPackage.createPackage();
                 for (Student s:model.list) {
-                    wordMLPackage.getMainDocumentPart().addParagraphOfText("Фамилия: " + s.getFio() + " Группа: " + s.getGroup() + "\n");
+                    wordMLPackage.getMainDocumentPart().addParagraphOfText("ФИО: " + s.getFio() + " группа: " + s.getGroup() + "\n");
                 }
                 wordMLPackage.save(new java.io.File(System.getProperty("user.home") + "/test.doc"));
             } catch (Exception e){
 
             }
         });
-
-//        done3.setOnAction(event -> {
-//            String fio = this.fio_forWork_field.getText();
-//            String task = this.task_field.getText();
-//
-//            for (int i = 0; i < DataModel.list.size(); ++i) {
-//                if (DataModel.list.get(i).getFio() == fio )
-//                    DataModel.list.get(i).setTask(task);
-//                else
-//                    System.out.println("error here");
-//            }
-//        });
     }
 }
