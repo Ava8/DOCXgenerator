@@ -1,11 +1,7 @@
 package sample;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 public class Controller {
 
@@ -20,10 +16,10 @@ public class Controller {
     @FXML
     private Button done1;
 
-    // list 2 elements
-
     @FXML
     private Label student_count;
+
+    // list 2 elements
 
     @FXML
     private TextField month_field;
@@ -72,4 +68,30 @@ public class Controller {
 
     @FXML
     private Button create_docx;
+
+
+    @FXML
+    private  void initialize() {
+        done1.setOnAction(event -> {
+            String fio = this.fio_field.getText();
+            String group = this.group_field.getText();
+
+            DataModel.list.add(new Student(fio,group));
+
+            int count = DataModel.list.size();
+            this.student_count.setText(Integer.toString(count));
+        });
+
+//        done3.setOnAction(event -> {
+//            String fio = this.fio_forWork_field.getText();
+//            String task = this.task_field.getText();
+//
+//            for (int i = 0; i < DataModel.list.size(); ++i) {
+//                if (DataModel.list.get(i).getFio() == fio )
+//                    DataModel.list.get(i).setTask(task);
+//                else
+//                    System.out.println("error here");
+//            }
+//        });
+    }
 }
