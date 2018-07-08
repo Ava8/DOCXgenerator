@@ -88,9 +88,6 @@ public class Controller {
             try{
                 WordprocessingMLPackage wordMLPackage;
                 wordMLPackage = WordprocessingMLPackage.createPackage();
-                for (int i = 0; i < model.list.size(); i ++){
-                    
-                }
                 for (Student s:model.list) {
                     wordMLPackage.getMainDocumentPart().addParagraphOfText("Фамилия: " + s.getFio() + " Группа: " + s.getGroup() + "\n");
                 }
