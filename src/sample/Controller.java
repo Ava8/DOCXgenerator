@@ -84,7 +84,7 @@ public class Controller {
             String group = this.group_field.getText();
             if (fio != null & group != null){
                 model.list.add(new Student(fio,group));
-                dbWrapper.setField(new GroupModel(this.fio_field.getText()));
+                dbWrapper.setField(new GroupModel(fio, group));
                 this.student_count.setText(Integer.toString(model.list.size()));
             }
         });

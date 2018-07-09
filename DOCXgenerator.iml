@@ -7,9 +7,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="org.docx4j:docx4j:3.3.7" level="project" />
-    <orderEntry type="library" name="com.j256.ormlite:ormlite-jdbc:4.48" level="project" />
-    <orderEntry type="library" name="org.xerial:sqlite-jdbc:3.23.1" level="project" />
     <orderEntry type="library" name="com.j256.ormlite:ormlite-core:4.48" level="project" />
+    <orderEntry type="library" name="com.j256.ormlite:ormlite-jdbc:4.48" level="project" />
+    <orderEntry type="library" name="org.docx4j:docx4j:3.3.7" level="project" />
+    <orderEntry type="library" name="org.xerial:sqlite-jdbc:3.23.1" level="project" />
   </component>
 </module>

@@ -12,8 +12,15 @@ public class GroupModel {
     @DatabaseField(columnName = "FIO")
     private String studentFIO;
 
+    @DatabaseField(columnName = "GroupName")
+    private String studentGroupName;
+
     public int getId() {
         return id;
+    }
+
+    public String getStudentGroupName() {
+        return studentGroupName;
     }
 
     public String getStudentFIO() {
@@ -24,7 +31,8 @@ public class GroupModel {
 
     }
 
-    public GroupModel(String FIO){
+    public GroupModel(String FIO, String studentGroupName){
         this.studentFIO = FIO;
+        this.studentGroupName = studentGroupName;
     }
 }
