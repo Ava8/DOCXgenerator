@@ -14,10 +14,10 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("App");
         primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.setResizable(false);
         primaryStage.show();
         BasicConfigurator.configure();
     }
-    //testing commits
 
     public static void main(String[] args) {
         launch(args);

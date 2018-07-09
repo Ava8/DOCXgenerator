@@ -3,6 +3,8 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
+import sample.Database.DBWrapper;
+import sample.Database.GroupModel;
 
 public class Controller {
 
@@ -75,12 +77,16 @@ public class Controller {
 
     @FXML
     private  void initialize() {
+        DBWrapper dbWrapper = new DBWrapper();
+
         done1.setOnAction(event -> {
             String fio = this.fio_field.getText();
             String group = this.group_field.getText();
-
-            model.list.add(new Student(fio,group));
-            this.student_count.setText(Integer.toString(model.list.size()));
+            if (fio != null & group != null){
+                model.list.add(new Student(fio,group));
+                dbWrapper.setField(new GroupModel(this.fio_field.getText()));
+                this.student_count.setText(Integer.toString(model.list.size()));
+            }
         });
 
         create_docx.setOnAction(event -> {
