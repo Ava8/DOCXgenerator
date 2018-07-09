@@ -95,5 +95,22 @@ public class Controller {
 
             }
         });
+
+        done3.setOnAction(event -> {
+            String fio = fio_forWork_field.getText();
+            String task = task_field.getText();
+
+            for (Student s:model.list) {
+               if (s.getFio().equals(fio))
+                   s.setTask(task);
+            }
+
+            if (check_yes.isSelected()) {
+                check_no.setSelected(false);
+            } else if (check_no.isSelected()) {
+                check_yes.setSelected(false);
+            }
+        });
     }
+
 }
