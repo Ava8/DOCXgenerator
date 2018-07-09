@@ -1,14 +1,9 @@
 package sample;
 
-import com.j256.ormlite.jdbc.JdbcConnectionSource;
-import com.j256.ormlite.support.ConnectionSource;
-import com.j256.ormlite.table.TableUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import java.sql.* ;
 import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
 import sample.Database.DBWrapper;
-import sample.Database.GroupDAO;
 import sample.Database.GroupModel;
 
 public class Controller {
