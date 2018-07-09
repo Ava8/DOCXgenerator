@@ -8,10 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1727ab25-07c7-44bf-aa2f-5e589c592764" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DOCXgenerator/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DOCXgenerator/sample/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DOCXgenerator/sample/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,12 +18,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="12330">
-              <caret line="822" column="10" selection-start-line="822" selection-start-column="10" selection-end-line="822" selection-end-column="10" />
+            <state relative-caret-position="10410">
+              <caret line="710" column="10" selection-start-line="710" selection-start-column="10" selection-end-line="710" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -35,7 +31,7 @@
       <file leaf-file-name="GroupDAO.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Database/GroupDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
+            <state relative-caret-position="60">
               <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -44,11 +40,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GroupModel.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GroupModel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Database/GroupModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
+            <state relative-caret-position="90">
               <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DBWrapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/Database/DBWrapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="24" column="9" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="277">
+              <caret line="87" column="80" lean-forward="true" selection-start-line="87" selection-start-column="80" selection-end-line="87" selection-end-column="80" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -83,10 +103,10 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="54" />
-    <option name="width" value="960" />
-    <option name="height" value="766" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="804" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -94,8 +114,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -139,6 +157,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -146,7 +166,7 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="last_opened_file_path" value="D:/Code projects/Libs/docx4j-3.3.7.jar!/" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15332031" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
@@ -264,55 +284,35 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="804" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="804" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" visible="true" weight="0.033946253" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info id="Image Layers" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info id="Capture Tool" />
-      <window_info id="Designer" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24964234" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info id="Favorites" side_tool="true" />
       <window_info anchor="right" id="Palette" order="9" />
-      <window_info id="Designer" order="9" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="7" weight="0.25" />
-      <window_info anchor="right" id="Capture Analysis" order="10" />
-      <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="5" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.25672767" />
-      <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="12" />
-      <window_info anchor="bottom" id="Version Control" order="13" />
-      <window_info anchor="bottom" id="Run" order="4" visible="true" weight="0.328792" />
+      <window_info active="true" anchor="bottom" id="Messages" order="16" visible="true" weight="0.3281471" />
+      <window_info anchor="right" id="Palette&#9;" order="12" />
       <window_info id="Image Layers" order="10" />
+      <window_info anchor="right" id="Capture Analysis" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="15" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" order="13" />
+      <window_info anchor="bottom" id="Run" order="4" weight="0.328792" />
+      <window_info anchor="bottom" id="Version Control" order="13" />
+      <window_info anchor="bottom" id="Terminal" order="14" />
       <window_info id="Capture Tool" order="11" />
+      <window_info id="Designer" order="9" />
+      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.26037195" />
+      <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="5" weight="0.25" />
       <window_info id="UI Designer" order="12" />
-      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="right" id="Theme Preview" order="11" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
-      <window_info anchor="right" id="Palette&#9;" order="12" />
-      <window_info anchor="bottom" id="Terminal" order="14" />
-      <window_info anchor="bottom" id="Event Log" order="15" side_tool="true" />
-      <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="2" />
-      <window_info anchor="bottom" id="Messages" order="16" weight="0.328792" />
-      <window_info anchor="right" id="Maven Projects" order="13" />
       <window_info id="Favorites" order="13" side_tool="true" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="7" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Message" order="2" />
+      <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -328,8 +328,8 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/DOCXgenerator.iml">
       <provider selected="true" editor-type-id="text-editor" />
@@ -362,8 +362,8 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/vcs.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -373,12 +373,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/out/production/DOCXgenerator/sample/sample.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="38" selection-start-column="36" selection-end-column="38" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -391,8 +391,8 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Student.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -451,8 +451,8 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/DOCXgenerator.iml">
       <provider selected="true" editor-type-id="text-editor" />
@@ -489,8 +489,8 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/DOCXgenerator.iml">
       <provider selected="true" editor-type-id="text-editor" />
@@ -510,8 +510,8 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/DOCXgenerator.iml">
       <provider selected="true" editor-type-id="text-editor" />
@@ -544,8 +544,8 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/vcs.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -555,17 +555,17 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/out/production/DOCXgenerator/sample/sample.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="38" selection-start-column="36" selection-end-column="38" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12330">
-          <caret line="822" column="10" selection-start-line="822" selection-start-column="10" selection-end-line="822" selection-end-column="10" />
+        <state relative-caret-position="10410">
+          <caret line="710" column="10" selection-start-line="710" selection-start-column="10" selection-end-line="710" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -575,8 +575,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/DataModel.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -602,26 +602,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Database/DBWrapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="30" lean-forward="true" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Database/GroupDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
+        <state relative-caret-position="60">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -631,8 +614,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Database/GroupModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
+        <state relative-caret-position="90">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Database/DBWrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="9" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="87" column="80" lean-forward="true" selection-start-line="87" selection-start-column="80" selection-end-line="87" selection-end-column="80" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -650,7 +653,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -706,7 +708,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>org.docx4j:docx4j:3.3.7</last-edited>
+          <last-edited>org.xerial:sqlite-jdbc:3.23.1</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
