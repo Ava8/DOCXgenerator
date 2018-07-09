@@ -24,7 +24,7 @@ public class DBWrapper {
             System.out.println("ERROR (db connect) "+ r.toString());
         }
     }
-    
+
     //void to add new record
     public void setField(GroupModel var){
         try{

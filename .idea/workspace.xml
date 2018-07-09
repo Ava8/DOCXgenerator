@@ -6,20 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1727ab25-07c7-44bf-aa2f-5e589c592764" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/com_j256_ormlite_ormlite_core_4_48.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/com_j256_ormlite_ormlite_jdbc_4_48.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/org_xerial_sqlite_jdbc_3_23_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Database/DBWrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Database/GroupDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/Database/GroupModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DOCXgenerator.iml" beforeDir="false" afterPath="$PROJECT_DIR$/DOCXgenerator.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DOCXgenerator/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DOCXgenerator/sample/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DOCXgenerator/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DOCXgenerator/sample/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
-    </list>
+    <list default="true" id="1727ab25-07c7-44bf-aa2f-5e589c592764" name="Default" comment="Add fully working database (need to add more void to wrapper) via ORMLite framework" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,8 +34,8 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="95" lean-forward="true" selection-start-line="95" selection-end-line="95" />
+            <state relative-caret-position="187">
+              <caret line="11" column="34" lean-forward="true" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -77,8 +64,8 @@
       <file leaf-file-name="DBWrapper.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Database/DBWrapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" column="4" lean-forward="true" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
+            <state relative-caret-position="187">
+              <caret line="11" column="30" lean-forward="true" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -325,7 +312,14 @@
       <option name="project" value="LOCAL" />
       <updated>1531068174903</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Add fully working database (need to add more void to wrapper) via ORMLite framework">
+      <created>1531150666964</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1531150666964</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView">
@@ -349,12 +343,12 @@
       <window_info anchor="right" id="Capture Analysis" order="10" />
       <window_info anchor="bottom" id="Event Log" order="15" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="13" />
-      <window_info active="true" anchor="bottom" id="Run" order="4" visible="true" weight="0.328792" />
+      <window_info anchor="bottom" id="Run" order="4" weight="0.328792" />
       <window_info anchor="bottom" id="Version Control" order="13" />
       <window_info anchor="bottom" id="Terminal" order="14" />
       <window_info id="Capture Tool" order="11" />
       <window_info id="Designer" order="9" />
-      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.25672767" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.25672767" />
       <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="5" weight="0.25" />
       <window_info id="UI Designer" order="12" />
@@ -376,7 +370,8 @@
     <MESSAGE value="testing commits" />
     <MESSAGE value="Added example of creating file" />
     <MESSAGE value="Add example of creating file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add example of creating file" />
+    <MESSAGE value="Add fully working database (need to add more void to wrapper) via ORMLite framework" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add fully working database (need to add more void to wrapper) via ORMLite framework" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
@@ -745,6 +740,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Database/GroupDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Database/GroupModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -763,18 +768,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="95" lean-forward="true" selection-start-line="95" selection-end-line="95" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Database/GroupDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="187">
+          <caret line="11" column="34" lean-forward="true" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -783,8 +778,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Database/DBWrapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="4" lean-forward="true" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
+        <state relative-caret-position="187">
+          <caret line="11" column="30" lean-forward="true" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
