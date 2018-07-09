@@ -1,12 +1,21 @@
-package sample;
+package sample.Controllers;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.*;
 import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import javafx.stage.*;
 import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
+import sample.Main;
+import sample.Models.DataModel;
 import sample.Database.DBWrapper;
 import sample.Database.GroupModel;
+import sample.Models.Student;
 
-public class Controller {
+import java.io.IOException;
+
+public class MainController {
 
     private DataModel model = new DataModel();
 
@@ -23,6 +32,9 @@ public class Controller {
 
     @FXML
     private Label student_count;
+
+    @FXML
+    private Button getList;
 
     // list 2 elements
 
@@ -41,19 +53,10 @@ public class Controller {
     // list 3 elements
 
     @FXML
-    private TextField fio_forWork_field;
+    private ChoiceBox<?> getFIO_forTask;
 
     @FXML
     private TextArea task_field;
-
-    @FXML
-    private CheckBox check_yes;
-
-    @FXML
-    private CheckBox check_no;
-
-    @FXML
-    private TextField dateForTask_field;
 
     @FXML
     private Button done3;
@@ -61,7 +64,7 @@ public class Controller {
     // list 4 elements
 
     @FXML
-    private TextField fio_ForComment_filed;
+    private ChoiceBox<?> getFIO_forComment;
 
     @FXML
     private TextArea comment_field;
@@ -80,8 +83,10 @@ public class Controller {
         DBWrapper dbWrapper = new DBWrapper();
 
         done1.setOnAction(event -> {
+            //TODO: get students count from data base
             String fio = this.fio_field.getText();
             String group = this.group_field.getText();
+
             if (fio != null & group != null){
                 model.list.add(new Student(fio,group));
                 dbWrapper.setField(new GroupModel(fio, group));
@@ -90,6 +95,7 @@ public class Controller {
         });
 
         create_docx.setOnAction(event -> {
+            //TODO: add opportunity to choose file save directory & file name
             try {
                 WordprocessingMLPackage wordMLPackage;
                 wordMLPackage = WordprocessingMLPackage.createPackage();
@@ -102,21 +108,19 @@ public class Controller {
             }
         });
 
-        done3.setOnAction(event -> {
-            String fio = fio_forWork_field.getText();
-            String task = task_field.getText();
+        getList.setOnAction(event -> {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(Main.class.getResource("Views/list.fxml"));
 
-            for (Student s:model.list) {
-               if (s.getFio().equals(fio))
-                   s.setTask(task);
-            }
-
-            if (check_yes.isSelected()) {
-                check_no.setSelected(false);
-            } else if (check_no.isSelected()) {
-                check_yes.setSelected(false);
-            }
+                Scene scene = new Scene(fxmlLoader.load(), 600, 650);
+                Stage stage = new Stage();
+                stage.setTitle("List");
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) { }
         });
+
     }
 
 }

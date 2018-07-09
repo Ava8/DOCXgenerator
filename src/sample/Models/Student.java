@@ -1,4 +1,4 @@
-package sample;
+package sample.Models;
 
 public class Student {
     private String fio;
