@@ -20,9 +20,13 @@ import java.io.IOException;
 public class MainController {
 
     private DataModel model = new DataModel();
-
+    DBWrapper dbWrapper = new DBWrapper();
     private List<String> s_list = new ArrayList<>();
     private boolean List_isChanged = false;
+
+    public interface sendWrapper {
+        void getWrapper(DBWrapper wrapper);
+    }
 
     // list 1 elements
 
@@ -85,8 +89,6 @@ public class MainController {
 
     @FXML
     private  void initialize() {
-        DBWrapper dbWrapper = new DBWrapper();
-
         done1.setOnAction(event -> {
             String fio = this.fio_field.getText();
             String group = this.group_field.getText();
@@ -108,18 +110,17 @@ public class MainController {
                 getFIO_forComment.setItems(students_list);
                 List_isChanged = false;
             }
-
         });
 
         getList.setOnAction(event -> {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(Main.class.getResource("Views/list.fxml"));
-
                 Scene scene = new Scene(fxmlLoader.load(), 600, 650);
                 Stage stage = new Stage();
                 stage.setTitle("List");
                 stage.setScene(scene);
+                ((sendWrapper) fxmlLoader.getController()).getWrapper(dbWrapper);
                 stage.show();
             } catch (IOException e) {
             }
@@ -170,7 +171,6 @@ public class MainController {
 
             }
         });
-
     }
 
     private void getListOfStudents(List<String> list) {
@@ -178,5 +178,6 @@ public class MainController {
             list.add(s.getFio());
         }
     }
+
 
 }

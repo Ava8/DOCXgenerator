@@ -20,8 +20,6 @@ public class Main extends Application {
         BasicConfigurator.configure();
     }
 
-
-
     public static void main(String[] args) {
         launch(args);
     }

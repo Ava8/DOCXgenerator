@@ -1,6 +1,7 @@
 package sample.Database;
 
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
+import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
@@ -45,5 +46,18 @@ public class DBWrapper {
             System.out.println("ERROR "+ r.toString());
         }
         if (response != null) return response.get(0); else return new GroupModel();
+    }
+
+    public void deleteField(int id) throws Exception{
+        DeleteBuilder<GroupModel, String> deleteBuilder = groupDAO.deleteBuilder();
+        deleteBuilder.where().eq("ID", id);
+        deleteBuilder.delete();
+    }
+
+    public List<GroupModel> getAllStudents() throws Exception{
+        QueryBuilder<GroupModel, String> builder = groupDAO.queryBuilder();
+        builder.selectColumns("ID");
+        builder.selectColumns("FIO");
+        return builder.query();
     }
 }
