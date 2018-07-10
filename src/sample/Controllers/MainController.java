@@ -21,6 +21,9 @@ public class MainController {
 
     private DataModel model = new DataModel();
 
+    private List<String> s_list = new ArrayList<>();
+    private boolean List_isChanged = false;
+
     // list 1 elements
 
     @FXML
@@ -55,7 +58,7 @@ public class MainController {
     // list 3 elements
 
     @FXML
-    private ChoiceBox<Student> getFIO_forTask;
+    private ChoiceBox<String> getFIO_forTask;
 
     @FXML
     private TextArea task_field;
@@ -66,7 +69,7 @@ public class MainController {
     // list 4 elements
 
     @FXML
-    private ChoiceBox<?> getFIO_forComment;
+    private ChoiceBox<String> getFIO_forComment;
 
     @FXML
     private TextArea comment_field;
@@ -84,13 +87,6 @@ public class MainController {
     private  void initialize() {
         DBWrapper dbWrapper = new DBWrapper();
 
-        // TODO: set list of students to choice box
-//        examples of non working code to set string value in choice box
-//        ObservableList<Student> students_list = FXCollections.observableList(model.list);
-//        getFIO_forTask.setItems(students_list);
-
-
-
         done1.setOnAction(event -> {
             String fio = this.fio_field.getText();
             String group = this.group_field.getText();
@@ -100,7 +96,19 @@ public class MainController {
                 model.list.add(new Student(fio, group));
                 dbWrapper.setField(new GroupModel(fio, group));
                 this.student_count.setText(Integer.toString(model.list.size()));
+                List_isChanged = true;
             }
+
+            // set list of students to choice box
+            if (List_isChanged == true) {
+                s_list.clear();
+                getListOfStudents(s_list);
+                ObservableList<String> students_list = FXCollections.observableArrayList(s_list);
+                getFIO_forTask.setItems(students_list);
+                getFIO_forComment.setItems(students_list);
+                List_isChanged = false;
+            }
+
         });
 
         getList.setOnAction(event -> {
@@ -130,17 +138,24 @@ public class MainController {
         });
 
         done3.setOnAction(event -> {
-            // TODO: make it work
-//            String task = task_field.getText();
-//            // String value = (String) choiceBox.getValue();
-//
-//            for (Student s: model.list) {
-//                if (s.getFio().equals(/*selected choice box item: value*/))
-//                    s.setTask(task);
-//            }
+            String task = task_field.getText();
+            String fio = getFIO_forTask.getValue();
+
+            for (Student s: model.list) {
+                if (s.getFio().equals(fio))
+                    s.setTask(task);
+            }
         });
 
-        // TODO: button "done4" same as "done3", make it work too
+        done4.setOnAction(event -> {
+            String comment = comment_field.getText();
+            String fio = getFIO_forComment.getValue();
+
+            for (Student s: model.list) {
+                if (s.getFio().equals(fio))
+                    s.setMasterComment(comment);
+            }
+        });
 
         create_docx.setOnAction(event -> {
             //TODO: add opportunity to choose file save directory & file name
@@ -156,6 +171,12 @@ public class MainController {
             }
         });
 
+    }
+
+    private void getListOfStudents(List<String> list) {
+        for (Student s: model.list) {
+            list.add(s.getFio());
+        }
     }
 
 }
