@@ -58,6 +58,7 @@ public class DBWrapper {
         QueryBuilder<GroupModel, String> builder = groupDAO.queryBuilder();
         builder.selectColumns("ID");
         builder.selectColumns("FIO");
+        builder.selectColumns("GroupName");
         return builder.query();
     }
 }

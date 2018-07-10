@@ -86,9 +86,9 @@ public class MainController {
     @FXML
     private Button create_docx;
 
-
     @FXML
     private  void initialize() {
+        student_count.setText(String.valueOf(getStudentsCount()));
         done1.setOnAction(event -> {
             String fio = this.fio_field.getText();
             String group = this.group_field.getText();
@@ -97,7 +97,7 @@ public class MainController {
             if (fio != null & group != null) {
                 model.list.add(new Student(fio, group));
                 dbWrapper.setField(new GroupModel(fio, group));
-                this.student_count.setText(Integer.toString(model.list.size()));
+                student_count.setText(String.valueOf(getStudentsCount()));
                 List_isChanged = true;
             }
 
@@ -179,5 +179,12 @@ public class MainController {
         }
     }
 
-
+    private int getStudentsCount(){
+        try{
+            List<GroupModel> toCount = dbWrapper.getAllStudents();
+            return toCount.size();
+        } catch (Exception e){
+            return 0;
+        }
+    }
 }

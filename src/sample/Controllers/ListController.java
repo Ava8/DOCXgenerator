@@ -46,11 +46,11 @@ public class ListController implements MainController.sendWrapper {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 fio_field.setText(newValue);
+                group_field.setText(group.get(listView.getSelectionModel().getSelectedIndex()).getStudentGroupName());
             }
         });
         delete_button.setOnAction(event -> {
             try{
-                //System.out.println(test);
                 wrapper.deleteField(group.get(listView.getSelectionModel().getSelectedIndex()).getId());
                 configureListView();
             } catch (Exception e){
