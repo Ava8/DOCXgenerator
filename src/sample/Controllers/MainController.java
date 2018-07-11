@@ -13,6 +13,8 @@ import sample.Models.DataModel;
 import sample.Database.DBWrapper;
 import sample.Database.GroupModel;
 import sample.Models.Student;
+
+import java.beans.EventHandler;
 import java.util.*;
 
 import java.io.IOException;
@@ -23,6 +25,7 @@ public class MainController {
     DBWrapper dbWrapper = new DBWrapper();
     private List<String> s_list = new ArrayList<>();
     private boolean List_isChanged = false;
+    FXMLLoader fxmlLoader;
 
     public interface sendWrapper {
         void getWrapper(DBWrapper wrapper);
@@ -89,6 +92,9 @@ public class MainController {
     @FXML
     private  void initialize() {
         student_count.setText(String.valueOf(getStudentsCount()));
+        updateStudentsList();
+        getFIO_forTask.setItems(FXCollections.observableArrayList(s_list));
+
         done1.setOnAction(event -> {
             String fio = this.fio_field.getText();
             String group = this.group_field.getText();
@@ -98,23 +104,17 @@ public class MainController {
                 model.list.add(new Student(fio, group));
                 dbWrapper.setField(new GroupModel(fio, group));
                 student_count.setText(String.valueOf(getStudentsCount()));
-                List_isChanged = true;
-            }
-
-            // set list of students to choice box
-            if (List_isChanged == true) {
-                s_list.clear();
-                getListOfStudents(s_list);
+                updateStudentsList();
                 ObservableList<String> students_list = FXCollections.observableArrayList(s_list);
                 getFIO_forTask.setItems(students_list);
                 getFIO_forComment.setItems(students_list);
-                List_isChanged = false;
+                ((sendWrapper) fxmlLoader.getController()).getWrapper(dbWrapper);
             }
         });
 
         getList.setOnAction(event -> {
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(Main.class.getResource("Views/list.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 600, 650);
                 Stage stage = new Stage();
@@ -122,6 +122,10 @@ public class MainController {
                 stage.setScene(scene);
                 ((sendWrapper) fxmlLoader.getController()).getWrapper(dbWrapper);
                 stage.show();
+                stage.setOnCloseRequest(e -> {
+                    System.out.println("test");
+                    updateStudentsList();
+                });
             } catch (IOException e) {
             }
         });
@@ -186,5 +190,16 @@ public class MainController {
         } catch (Exception e){
             return 0;
         }
+    }
+
+    private void updateStudentsList(){
+        try{
+            s_list.clear();
+            List<GroupModel> group;
+            group = dbWrapper.getAllStudents();
+            for (GroupModel student:group) {
+                s_list.add(student.getStudentFIO());
+            }
+        }catch (Exception r){ }
     }
 }
