@@ -16,7 +16,9 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("Views/sample.fxml"));
         primaryStage.setTitle("App");
-        primaryStage.setScene(new Scene(root, 600, 400));
+        Scene scene = new Scene(root, 600, 400);
+        scene.getStylesheets().add("sample/style.css");
+        primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();
         BasicConfigurator.configure();

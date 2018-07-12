@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.MainController">
+<?import com.jfoenix.controls.JFXTextField?>
+<JFXTabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../style.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.MainController">
   <tabs>
     <Tab text="лист 1">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #2E3348;">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #263238;">
                <children>
                   <Label layoutX="121.0" layoutY="158.0" prefHeight="17.0" prefWidth="361.0" text="ФИО студента:" textFill="WHITE" />
-                  <TextField fx:id="fio_field" layoutX="121.0" layoutY="182.0" prefHeight="27.0" prefWidth="361.0" />
+                  <JFXTextField fx:id="fio_field" layoutX="121.0" layoutY="182.0" prefHeight="27.0" prefWidth="361.0" />
                   <Label layoutX="121.0" layoutY="215.0" prefHeight="17.0" prefWidth="361.0" text="группа:" textFill="WHITE" />
-                  <TextField fx:id="group_field" layoutX="121.0" layoutY="239.0" prefHeight="27.0" prefWidth="361.0" />
-                  <Button fx:id="done1" layoutX="121.0" layoutY="295.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="361.0" text="добавить студента в список" />
+                  <JFXTextField fx:id="group_field" layoutX="121.0" layoutY="239.0" prefHeight="27.0" prefWidth="361.0" />
+                  <JFXButton fx:id="done1" layoutX="121.0" layoutY="295.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="361.0" text="добавить студента в список" />
                   <Label alignment="TOP_LEFT" layoutX="125.0" layoutY="76.0" prefHeight="21.0" prefWidth="221.0" text="количество студентов в списке :" textFill="WHITE" />
                   <Label fx:id="student_count" layoutX="346.0" layoutY="78.0" prefHeight="17.0" prefWidth="133.0" text="0" textFill="WHITE" />
                   <Label layoutX="214.0" layoutY="29.0" text="СПИСОК СТУДЕНТОВ" textFill="WHITE">
@@ -28,21 +29,21 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Button fx:id="getList" layoutX="120.0" layoutY="110.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="361.0" text="посмотреть список студентов" />
+                  <JFXButton fx:id="getList" layoutX="120.0" layoutY="110.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="361.0" text="посмотреть список студентов" />
                </children></AnchorPane>
       </content>
     </Tab>
     <Tab text="лист 2">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #2E3348;">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #263238;">
                <children>
                   <Label layoutX="120.0" layoutY="57.0" prefHeight="17.0" prefWidth="361.0" text="месяц:" textFill="WHITE" />
-                  <TextField fx:id="month_field" layoutX="120.0" layoutY="83.0" prefHeight="27.0" prefWidth="361.0" />
+                  <JFXTextField fx:id="month_field" layoutX="120.0" layoutY="83.0" prefHeight="27.0" prefWidth="361.0" />
                   <Label layoutX="120.0" layoutY="125.0" prefHeight="17.0" prefWidth="361.0" text="предмет:" textFill="WHITE" />
-                  <TextField fx:id="subject_field" layoutX="120.0" layoutY="153.0" prefHeight="27.0" prefWidth="361.0" />
+                  <JFXTextField fx:id="subject_field" layoutX="120.0" layoutY="153.0" prefHeight="27.0" prefWidth="361.0" />
                   <Label layoutX="120.0" layoutY="200.0" prefHeight="17.0" prefWidth="361.0" text="дни занятий (через запятую):" textFill="WHITE" />
-                  <TextField fx:id="subjectDays_field" layoutX="120.0" layoutY="228.0" prefHeight="27.0" prefWidth="361.0" />
-                  <Button fx:id="done2" layoutX="120.0" layoutY="284.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="361.0" text="готово" />
+                  <JFXTextField fx:id="subjectDays_field" layoutX="120.0" layoutY="228.0" prefHeight="27.0" prefWidth="361.0" />
+                  <JFXButton fx:id="done2" layoutX="120.0" layoutY="284.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="361.0" text="готово" />
                   <Label layoutX="218.0" layoutY="29.0" text="ОТЧЁТ ПОСЕЩЕНИЙ" textFill="#fffefe">
                      <font>
                         <Font size="16.0" />
@@ -53,48 +54,48 @@
     </Tab>
       <Tab text="лист 3">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #2E3348;">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #263238;">
                <children>
                   <Label layoutX="261.0" layoutY="28.0" text="ЗАДАНИЕ" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="120.0" layoutY="79.0" prefHeight="17.0" prefWidth="361.0" text="ФИО студента:" textFill="#fffefe" />
+                  <Label layoutX="120.0" layoutY="84.0" prefHeight="17.0" prefWidth="361.0" text="ФИО студента:" textFill="#fffefe" />
                   <Label layoutX="120.0" layoutY="140.0" prefHeight="17.0" prefWidth="361.0" text="задание:" textFill="#fffefe" />
                   <TextArea fx:id="task_field" layoutX="120.0" layoutY="164.0" prefHeight="75.0" prefWidth="361.0" />
-                  <Button fx:id="done3" layoutX="120.0" layoutY="280.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="361.0" text="готово" />
-                  <ChoiceBox fx:id="getFIO_forTask" layoutX="120.0" layoutY="96.0" prefHeight="27.0" prefWidth="361.0" />
+                  <JFXButton fx:id="done3" layoutX="120.0" layoutY="280.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="361.0" text="готово" />
+                  <ChoiceBox fx:id="getFIO_forTask" layoutX="120.0" layoutY="104.0" prefHeight="27.0" prefWidth="361.0" />
                </children>
             </AnchorPane>
          </content>
       </Tab>
       <Tab text="лист 4">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #2E3348;">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #263238;">
                <children>
                   <Label layoutX="234.0" layoutY="27.0" text="КОММЕНАТРИИ" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="119.0" layoutY="79.0" prefHeight="17.0" prefWidth="361.0" text="ФИО студента:" textFill="WHITE" />
+                  <Label layoutX="119.0" layoutY="76.0" prefHeight="17.0" prefWidth="361.0" text="ФИО студента:" textFill="WHITE" />
                   <TextArea fx:id="comment_field" layoutX="118.0" layoutY="164.0" prefHeight="75.0" prefWidth="361.0" />
                   <Label layoutX="119.0" layoutY="140.0" prefHeight="17.0" prefWidth="361.0" text="комментарий:" textFill="WHITE" />
-                  <Button fx:id="done4" layoutX="119.0" layoutY="280.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="361.0" text="готово" />
-                  <ChoiceBox fx:id="getFIO_forComment" layoutX="118.0" layoutY="96.0" prefHeight="27.0" prefWidth="361.0" />
+                  <JFXButton fx:id="done4" layoutX="119.0" layoutY="280.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="361.0" text="готово" />
+                  <ChoiceBox fx:id="getFIO_forComment" layoutX="118.0" layoutY="103.0" prefHeight="27.0" prefWidth="361.0" />
                </children>
             </AnchorPane>
          </content>
       </Tab>
       <Tab text="создать документ">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #2E3348;">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #263238;">
                <children>
-                  <Button fx:id="create_docx" layoutX="119.0" layoutY="170.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="361.0" text="создать документ" />
+                  <JFXButton fx:id="create_docx" layoutX="119.0" layoutY="170.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="361.0" text="создать документ" />
                </children>
             </AnchorPane>
          </content>
       </Tab>
   </tabs>
-</TabPane>
+</JFXTabPane>
