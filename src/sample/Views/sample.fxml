@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -15,7 +14,7 @@
   <tabs>
     <Tab text="лист 1">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #263238;">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #2E3348;">
                <children>
                   <Label layoutX="121.0" layoutY="158.0" prefHeight="17.0" prefWidth="361.0" text="ФИО студента:" textFill="WHITE" />
                   <JFXTextField fx:id="fio_field" layoutX="121.0" layoutY="182.0" prefHeight="27.0" prefWidth="361.0" />
@@ -35,7 +34,7 @@
     </Tab>
     <Tab text="лист 2">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #263238;">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #2E3348;">
                <children>
                   <Label layoutX="120.0" layoutY="57.0" prefHeight="17.0" prefWidth="361.0" text="месяц:" textFill="WHITE" />
                   <JFXTextField fx:id="month_field" layoutX="120.0" layoutY="83.0" prefHeight="27.0" prefWidth="361.0" />
@@ -54,7 +53,7 @@
     </Tab>
       <Tab text="лист 3">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #263238;">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #2E3348;">
                <children>
                   <Label layoutX="261.0" layoutY="28.0" text="ЗАДАНИЕ" textFill="WHITE">
                      <font>
@@ -72,7 +71,7 @@
       </Tab>
       <Tab text="лист 4">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #263238;">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #2E3348;">
                <children>
                   <Label layoutX="234.0" layoutY="27.0" text="КОММЕНАТРИИ" textFill="WHITE">
                      <font>
@@ -90,7 +89,7 @@
       </Tab>
       <Tab text="создать документ">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #263238;">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #2E3348;">
                <children>
                   <JFXButton fx:id="create_docx" layoutX="119.0" layoutY="170.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="361.0" text="создать документ" />
                </children>
