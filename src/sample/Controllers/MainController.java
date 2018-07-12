@@ -23,7 +23,6 @@ public class MainController {
     private DataModel model = new DataModel();
     DBWrapper dbWrapper = new DBWrapper();
     private List<String> s_list = new ArrayList<>();
-    private boolean List_isChanged = false;
     FXMLLoader fxmlLoader;
 
     public interface sendWrapper {
@@ -91,10 +90,8 @@ public class MainController {
     @FXML
     private  void initialize() {
 
-        student_count.setText(String.valueOf(getStudentsCount()));
-        updateStudentsList();
-        getFIO_forTask.setItems(FXCollections.observableArrayList(s_list));
 
+        updateWindowInfo();
         done1.setOnAction(event -> {
             String fio = this.fio_field.getText();
             String group = this.group_field.getText();
@@ -103,12 +100,8 @@ public class MainController {
             if (fio != null & group != null) {
                 model.list.add(new Student(fio, group));
                 dbWrapper.setField(new GroupModel(fio, group));
-                student_count.setText(String.valueOf(getStudentsCount()));
-                updateStudentsList();
-                ObservableList<String> students_list = FXCollections.observableArrayList(s_list);
-                getFIO_forTask.setItems(students_list);
-                getFIO_forComment.setItems(students_list);
-                ((sendWrapper) fxmlLoader.getController()).getWrapper(dbWrapper);
+                updateWindowInfo();
+                //((sendWrapper) fxmlLoader.getController()).getWrapper(dbWrapper);
             }
         });
 
@@ -121,10 +114,11 @@ public class MainController {
                 stage.setTitle("List");
                 stage.setScene(scene);
                 ((sendWrapper) fxmlLoader.getController()).getWrapper(dbWrapper);
+                ((Stage)((Node)event.getSource()).getScene().getWindow()).hide();
                 stage.show();
                 stage.setOnCloseRequest(e -> {
-                    System.out.println("test");
-                    updateStudentsList();
+                    ((Stage)((Node)event.getSource()).getScene().getWindow()).show();
+                    updateWindowInfo();
                 });
             } catch (IOException e) {
             }
@@ -177,10 +171,12 @@ public class MainController {
         });
     }
 
-    private void getListOfStudents(List<String> list) {
-        for (Student s: model.list) {
-            list.add(s.getFio());
-        }
+    private void updateWindowInfo(){
+        updateStudentsList();
+        ObservableList<String> students_list = FXCollections.observableArrayList(s_list);
+        getFIO_forTask.setItems(students_list);
+        getFIO_forComment.setItems(students_list);
+        student_count.setText(String.valueOf(getStudentsCount()));
     }
 
     private int getStudentsCount(){
