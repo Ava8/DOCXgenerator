@@ -1,0 +1,42 @@
+/*Created by Vinterg*/
+
+* {
+    -fx-primary:#2E3348;
+    -fx-secondary:#FFFF8D;
+    -fx-primarytext:#B2B2B2;
+}
+
+.root{
+    -fx-background-color: #283593
+}
+
+.tab-header-background{
+    -fx-background-color: #2E3348
+}
+
+.button {
+    -fx-background-color: #2E3348;
+    -fx-font-size: 15px;
+    -fx-background-radius: 30;
+    -fx-text-fill: white;
+    -fx-border-color:white;
+    -fx-border-width: 3 3 3 3;
+    -fx-border-radius: 30;
+    
+}
+
+.label{
+    -fx-font-size: 14px;
+}
+
+.text-field .input-line {
+    -fx-background-color: #FFFFFF;
+    
+}
+
+.jfx-text-field
+{
+    -jfx-focus-color: #FFFF8D;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 14px;
+}
