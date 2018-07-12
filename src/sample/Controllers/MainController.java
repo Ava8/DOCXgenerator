@@ -100,7 +100,7 @@ public class MainController {
             String group = this.group_field.getText();
 
             //TODO: get students count from data base
-            if (fio != null & group != null) {
+            if (!fio.equals("") & !group.equals("")) {
                 model.list.add(new Student(fio, group));
                 dbWrapper.setField(new GroupModel(fio, group));
                 updateWindowInfo();
@@ -128,10 +128,12 @@ public class MainController {
         });
 
         done2.setOnAction(event -> {
-            if(month_field.getText() != null & subject_field.getText() != null & subjectDays_field.getText() != null){
-                String month = month_field.getText();
-                String subject = subject_field.getText();
-                String days = subjectDays_field.getText();
+
+            String month = month_field.getText();
+            String subject = subject_field.getText();
+            String days = subjectDays_field.getText();
+
+            if(!month.equals("") & !subject.equals("") & !days.equals("")){
 
                 model.visitingRegisterMonth  = month;
                 model.visitingRegisterSubject = subject;
