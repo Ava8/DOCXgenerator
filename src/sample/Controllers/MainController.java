@@ -178,7 +178,16 @@ public class MainController {
         getFIO_forComment.setItems(students_list);
         student_count.setText(String.valueOf(s_list.size()));
     }
-    
+
+    private int getStudentsCount(){
+        try{
+            List<GroupModel> toCount = dbWrapper.getAllStudents();
+            return toCount.size();
+        } catch (Exception e){
+            return 0;
+        }
+    }
+
     private void updateStudentsList(){
         try{
             s_list.clear();
