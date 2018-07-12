@@ -14,7 +14,6 @@ import sample.Database.DBWrapper;
 import sample.Database.GroupModel;
 import sample.Models.Student;
 
-import java.beans.EventHandler;
 import java.util.*;
 
 import java.io.IOException;
@@ -91,6 +90,7 @@ public class MainController {
 
     @FXML
     private  void initialize() {
+
         student_count.setText(String.valueOf(getStudentsCount()));
         updateStudentsList();
         getFIO_forTask.setItems(FXCollections.observableArrayList(s_list));

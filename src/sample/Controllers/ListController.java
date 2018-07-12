@@ -1,6 +1,5 @@
 package sample.Controllers;
 
-import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -9,10 +8,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import sample.Database.DBWrapper;
 import sample.Database.GroupModel;
-import sample.Main;
-import sample.Models.Student;
-
-import java.awt.event.ActionEvent;
 import java.util.List;
 
 public class ListController implements MainController.sendWrapper {
@@ -61,6 +56,7 @@ public class ListController implements MainController.sendWrapper {
                 wrapper.deleteField(group.get(listView.getSelectionModel().getSelectedIndex()).getId());
                 group_field.clear();
                 configureListView();
+
             } catch (Exception e){
                 System.out.println("ERROR "+ e.toString());
             }
@@ -80,7 +76,4 @@ public class ListController implements MainController.sendWrapper {
         }
         listView.setItems(data);
     }
-
-
-
 }
