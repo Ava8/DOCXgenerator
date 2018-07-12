@@ -8,6 +8,7 @@ import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.stage.*;
 import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
+import sample.Helpers.DOCXWrapper;
 import sample.Main;
 import sample.Models.DataModel;
 import sample.Database.DBWrapper;
@@ -21,9 +22,12 @@ import java.io.IOException;
 public class MainController {
 
     private DataModel model = new DataModel();
-    DBWrapper dbWrapper = new DBWrapper();
+    private DBWrapper dbWrapper = new DBWrapper();
     private List<String> s_list = new ArrayList<>();
-    FXMLLoader fxmlLoader;
+    private DOCXWrapper docxWrapper;
+    private FXMLLoader fxmlLoader;
+
+    private boolean needAttemptioinList = false;
 
     public interface sendWrapper {
         void getWrapper(DBWrapper wrapper);
@@ -89,10 +93,9 @@ public class MainController {
 
     @FXML
     private  void initialize() {
-
-
         updateWindowInfo();
         done1.setOnAction(event -> {
+
             String fio = this.fio_field.getText();
             String group = this.group_field.getText();
 
@@ -125,15 +128,18 @@ public class MainController {
         });
 
         done2.setOnAction(event -> {
-            String month = month_field.getText();
-            String subject = subject_field.getText();
-            String days = subjectDays_field.getText();
+            if(month_field.getText() != null & subject_field.getText() != null & subjectDays_field.getText() != null){
+                String month = month_field.getText();
+                String subject = subject_field.getText();
+                String days = subjectDays_field.getText();
 
-            model.visitingRegisterMonth  = month;
-            model.visitingRegisterSubject = subject;
+                model.visitingRegisterMonth  = month;
+                model.visitingRegisterSubject = subject;
 
-            List<String> subjectDays = new ArrayList<>(Arrays.asList(days.split(",")));
-            model.visitingRegisterMonthDays = subjectDays;
+                List<String> subjectDays = new ArrayList<>(Arrays.asList(days.split(",")));
+                model.visitingRegisterMonthDays = subjectDays;
+                needAttemptioinList = true;
+            }
         });
 
         done3.setOnAction(event -> {
@@ -159,12 +165,12 @@ public class MainController {
         create_docx.setOnAction(event -> {
             //TODO: add opportunity to choose file save directory & file name
             try {
-                WordprocessingMLPackage wordMLPackage;
-                wordMLPackage = WordprocessingMLPackage.createPackage();
-                for (Student s : model.list) {
-                    wordMLPackage.getMainDocumentPart().addParagraphOfText("ФИО: " + s.getFio() + " группа: " + s.getGroup() + "\n");
+                docxWrapper = new DOCXWrapper();
+                docxWrapper.addStudentList(model);
+                if (needAttemptioinList){
+                    docxWrapper.addAttendList(model);
                 }
-                wordMLPackage.save(new java.io.File(System.getProperty("user.home") + "/test.doc"));
+                docxWrapper.saveDocument("test");
             } catch (Exception e) {
 
             }
@@ -182,10 +188,12 @@ public class MainController {
     private void updateStudentsList(){
         try{
             s_list.clear();
+            model.list.clear();
             List<GroupModel> group;
             group = dbWrapper.getAllStudents();
             for (GroupModel student:group) {
                 s_list.add(student.getStudentFIO());
+                model.list.add(new Student(student.getStudentFIO(), student.getStudentGroupName()));
             }
         }catch (Exception r){ }
     }
