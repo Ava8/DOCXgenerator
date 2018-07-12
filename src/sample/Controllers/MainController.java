@@ -113,6 +113,7 @@ public class MainController {
                 fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(Main.class.getResource("Views/list.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 600, 650);
+                scene.getStylesheets().add("sample/style.css");
                 Stage stage = new Stage();
                 stage.setTitle("List");
                 stage.setScene(scene);

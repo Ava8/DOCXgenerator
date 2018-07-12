@@ -6,6 +6,10 @@
     -fx-primarytext:#B2B2B2;
 }
 
+.jfx-rippler {
+    -jfx-rippler-fill: #FFFF8D;
+}
+
 .root{
     -fx-background-color: #283593
 }
@@ -39,4 +43,44 @@
     -jfx-focus-color: #FFFF8D;
     -fx-text-fill: #FFFFFF;
     -fx-font-size: 14px;
+}
+
+/*Style of ChoiceBox*/
+
+.choice-box {
+    -fx-background-radius: 30;
+    -fx-background-color: #1e212f;
+    -fx-mark-color: #FFFF8D;
+}
+
+.choice-box > .label { -fx-text-fill: white; }
+
+.choice-box .context-menu { -fx-background-color: #1e212f; }
+
+.choice-box .menu-item:focused { -fx-background-color: #FFFF8D; }
+
+.choice-box .menu-item > .label { -fx-text-fill: white; }
+
+.choice-box .menu-item:focused > .label { -fx-text-fill: black; }
+
+/*Style of List View*/
+.list-view {
+    -fx-background-color: #464d6d;
+}
+
+.list-view .list-cell:filled:selected:focused, .list-view  .list-cell:filled:selected {
+    -fx-background-color: #FFFF8D;
+    -fx-font-size: 15px;
+    -fx-text-fill: black;
+}
+
+.list-view .list-cell:even {
+    -fx-background-color: #464d6d;
+    -fx-font-size: 15px;
+    -fx-text-fill: white;
+}
+.list-view .list-cell:odd {
+    -fx-background-color: #464d6d;
+    -fx-font-size: 15px;
+    -fx-text-fill: white;
 }
