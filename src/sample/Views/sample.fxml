@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.ChoiceBox?>
@@ -18,14 +19,14 @@
                <children>
                   <Label layoutX="121.0" layoutY="158.0" prefHeight="17.0" prefWidth="361.0" text="ФИО студента:" textFill="WHITE" />
                   <JFXTextField fx:id="fio_field" layoutX="121.0" layoutY="182.0" prefHeight="27.0" prefWidth="361.0" />
-                  <Label layoutX="121.0" layoutY="215.0" prefHeight="17.0" prefWidth="361.0" text="группа:" textFill="WHITE" />
-                  <JFXTextField fx:id="group_field" layoutX="121.0" layoutY="239.0" prefHeight="27.0" prefWidth="361.0" />
+                  <Label layoutX="121.0" layoutY="219.0" prefHeight="17.0" prefWidth="361.0" text="Группа:" textFill="WHITE" />
+                  <JFXTextField fx:id="group_field" layoutX="120.0" layoutY="245.0" prefHeight="27.0" prefWidth="361.0" />
                   <JFXButton fx:id="done1" layoutX="121.0" layoutY="295.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="361.0" text="добавить студента в список" />
-                  <Label alignment="TOP_LEFT" layoutX="125.0" layoutY="76.0" prefHeight="21.0" prefWidth="221.0" text="количество студентов в списке :" textFill="WHITE" />
-                  <Label fx:id="student_count" layoutX="346.0" layoutY="78.0" prefHeight="17.0" prefWidth="133.0" text="0" textFill="WHITE" />
+                  <Label alignment="TOP_LEFT" layoutX="125.0" layoutY="76.0" prefHeight="21.0" prefWidth="226.0" text="Количество студентов в списке :" textFill="WHITE" />
+                  <Label fx:id="student_count" layoutX="351.0" layoutY="77.0" prefHeight="17.0" prefWidth="133.0" text="0" textFill="WHITE" />
                   <Label layoutX="214.0" layoutY="29.0" text="СПИСОК СТУДЕНТОВ" textFill="WHITE">
                      <font>
-                        <Font size="16.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <JFXButton fx:id="getList" layoutX="120.0" layoutY="110.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="361.0" text="посмотреть список студентов" />
@@ -43,7 +44,7 @@
                   <Label layoutX="120.0" layoutY="200.0" prefHeight="17.0" prefWidth="361.0" text="дни занятий (через запятую):" textFill="WHITE" />
                   <JFXTextField fx:id="subjectDays_field" layoutX="120.0" layoutY="228.0" prefHeight="27.0" prefWidth="361.0" />
                   <JFXButton fx:id="done2" layoutX="120.0" layoutY="284.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="361.0" text="готово" />
-                  <Label layoutX="218.0" layoutY="29.0" text="ОТЧЁТ ПОСЕЩЕНИЙ" textFill="#fffefe">
+                  <Label layoutX="233.0" layoutY="30.0" text="ОТЧЁТ ПОСЕЩЕНИЙ" textFill="#fffefe">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -55,16 +56,16 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #2E3348;">
                <children>
-                  <Label layoutX="261.0" layoutY="28.0" text="ЗАДАНИЕ" textFill="WHITE">
+                  <Label layoutX="269.0" layoutY="29.0" text="ЗАДАНИЕ" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
                   <Label layoutX="120.0" layoutY="78.0" prefHeight="17.0" prefWidth="361.0" text="ФИО студента:" textFill="#fffefe" />
-                  <Label layoutX="120.0" layoutY="140.0" prefHeight="17.0" prefWidth="361.0" text="Задание:" textFill="#fffefe" />
-                  <TextArea fx:id="task_field" layoutX="120.0" layoutY="167.0" prefHeight="75.0" prefWidth="361.0" />
-                  <JFXButton fx:id="done3" layoutX="120.0" layoutY="280.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="361.0" text="готово" />
-                  <ChoiceBox fx:id="getFIO_forTask" layoutX="120.0" layoutY="104.0" prefHeight="27.0" prefWidth="361.0" />
+                  <Label layoutX="120.0" layoutY="150.0" prefHeight="17.0" prefWidth="361.0" text="Задание:" textFill="#fffefe" />
+                  <TextArea fx:id="task_field" layoutX="120.0" layoutY="182.0" prefHeight="75.0" prefWidth="361.0" />
+                  <JFXButton fx:id="done3" layoutX="120.0" layoutY="279.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="361.0" text="готово" />
+                  <ChoiceBox fx:id="getFIO_forTask" layoutX="120.0" layoutY="110.0" prefHeight="27.0" prefWidth="361.0" />
                </children>
             </AnchorPane>
          </content>
@@ -73,16 +74,16 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #2E3348;">
                <children>
-                  <Label layoutX="234.0" layoutY="27.0" text="КОММЕНАТРИИ" textFill="WHITE">
+                  <Label layoutX="245.0" layoutY="28.0" text="КОММЕНАТРИИ" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="119.0" layoutY="76.0" prefHeight="17.0" prefWidth="361.0" text="ФИО студента:" textFill="WHITE" />
-                  <TextArea fx:id="comment_field" layoutX="118.0" layoutY="164.0" prefHeight="75.0" prefWidth="361.0" />
-                  <Label layoutX="119.0" layoutY="140.0" prefHeight="17.0" prefWidth="361.0" text="комментарий:" textFill="WHITE" />
-                  <JFXButton fx:id="done4" layoutX="119.0" layoutY="280.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="361.0" text="готово" />
-                  <ChoiceBox fx:id="getFIO_forComment" layoutX="118.0" layoutY="103.0" prefHeight="27.0" prefWidth="361.0" />
+                  <Label layoutX="120.0" layoutY="78.0" prefHeight="17.0" prefWidth="361.0" text="ФИО студента:" textFill="WHITE" />
+                  <TextArea fx:id="comment_field" layoutX="120.0" layoutY="182.0" prefHeight="75.0" prefWidth="361.0" />
+                  <Label layoutX="120.0" layoutY="150.0" prefHeight="17.0" prefWidth="361.0" text="Комментарий:" textFill="WHITE" />
+                  <JFXButton fx:id="done4" layoutX="120.0" layoutY="279.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="361.0" text="готово" />
+                  <ChoiceBox fx:id="getFIO_forComment" layoutX="120.0" layoutY="110.0" prefHeight="27.0" prefWidth="361.0" />
                </children>
             </AnchorPane>
          </content>
@@ -92,6 +93,11 @@
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #2E3348;">
                <children>
                   <JFXButton fx:id="create_docx" layoutX="119.0" layoutY="170.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="361.0" text="создать документ" />
+                  <JFXCheckBox fx:id="list_checkbox" checkedColor="#ffff8d" layoutX="119.0" layoutY="130.0" text="Включить в документ список студентов" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXCheckBox>
                </children>
             </AnchorPane>
          </content>

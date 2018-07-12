@@ -1,4 +1,4 @@
-/*Created by Vinterg*/
+/*Created by Vinter*/
 
 * {
     -fx-primary:#2E3348;
@@ -64,12 +64,13 @@
 .choice-box .menu-item:focused > .label { -fx-text-fill: black; }
 
 /*Style of List View*/
+
 .list-view {
     -fx-background-color: #464d6d;
 }
 
 .list-view .list-cell:filled:selected:focused, .list-view  .list-cell:filled:selected {
-    -fx-background-color: #FFFF8D;
+    -fx-background-color: #FFFFFF;
     -fx-font-size: 15px;
     -fx-text-fill: black;
 }
@@ -79,8 +80,32 @@
     -fx-font-size: 15px;
     -fx-text-fill: white;
 }
+
 .list-view .list-cell:odd {
     -fx-background-color: #464d6d;
     -fx-font-size: 15px;
     -fx-text-fill: white;
 }
+
+/*Style of Text Area*/
+
+.text-area {
+    -fx-text-fill: #ffffff;
+    -fx-border-width: 0 0 0 0;
+    -fx-faint-focus-color: #FFFF8D;
+}
+
+.text-area:focused {
+    -fx-highlight-fill: #FFFF8D;
+    -fx-faint-focus-color: #FFFF8D;
+}
+
+.text-area .content {
+    -fx-background-color: #1e212f;
+    -fx-text-fill: white;
+    -fx-highlight-fill: #FFFF8D;
+}
+
+/*Style of Check Box*/
+
+ .jfx-check-box .mark{ -fx-border-color: #1e212f; }

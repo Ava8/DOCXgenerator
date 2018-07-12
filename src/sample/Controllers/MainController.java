@@ -27,7 +27,7 @@ public class MainController {
     private DOCXWrapper docxWrapper;
     private FXMLLoader fxmlLoader;
 
-    boolean[] documentParts = new boolean[4];
+    private boolean[] documentParts = new boolean[3];
 
     public interface sendWrapper {
         void getWrapper(DBWrapper wrapper);
@@ -92,6 +92,9 @@ public class MainController {
     private Button create_docx;
 
     @FXML
+    private CheckBox list_checkbox;
+
+    @FXML
     private  void initialize() {
         updateWindowInfo();
         done1.setOnAction(event -> {
@@ -141,7 +144,7 @@ public class MainController {
 
                 List<String> subjectDays = new ArrayList<>(Arrays.asList(days.split(",")));
                 model.visitingRegisterMonthDays = subjectDays;
-                documentParts[1] = true;
+                documentParts[0] = true;
             }
         });
 
@@ -153,7 +156,7 @@ public class MainController {
                 if (s.getFio().equals(fio))
                     s.setTask(task);
             }
-            documentParts[2] = true;
+            documentParts[1] = true;
         });
 
         done4.setOnAction(event -> {
@@ -165,27 +168,34 @@ public class MainController {
                     s.setMasterComment(comment);
             }
 
-            documentParts[3] = true;
+            documentParts[2] = true;
         });
 
         create_docx.setOnAction(event -> {
             //TODO: add opportunity to choose file save directory & file name
             try {
-                docxWrapper = new DOCXWrapper();
-                docxWrapper.addStudentList(model);
-                if (documentParts[1]){
-                    docxWrapper.addAttendList(model);
-                }
-                if (documentParts[2]){
-                    docxWrapper.addTaskList(model);
-                }
-                if (documentParts[3]){
-                    docxWrapper.addCommentList(model);
-                }
-                docxWrapper.saveDocument("test");
+                if (!list_checkbox.isSelected() & !documentParts[0] & !documentParts[1] & !documentParts[2] ){
+                    //TODO: dialog with error
+                } else {
+                    docxWrapper = new DOCXWrapper();
 
-                for (int i = 0; i<documentParts.length; i++) documentParts[i] = false;
+                    if (list_checkbox.isSelected()){
+                        docxWrapper.addStudentList(model);
+                    }
 
+                    if (documentParts[0]){
+                        docxWrapper.addAttendList(model);
+                    }
+                    if (documentParts[1]){
+                        docxWrapper.addTaskList(model);
+                    }
+                    if (documentParts[2]){
+                        docxWrapper.addCommentList(model);
+                    }
+                    docxWrapper.saveDocument(System.getProperty("user.dir") + "/test.doc");
+
+                    for (int i = 0; i<documentParts.length; i++) documentParts[i] = false;
+                }
             } catch (Exception e) {
 
             }

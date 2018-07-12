@@ -190,7 +190,7 @@ public class DOCXWrapper {
     }
 
     public void saveDocument(String path) throws Exception{
-        File exportFile = new File(System.getProperty("user.home") + "/test.doc");
+        File exportFile = new File(path);
         wordMLPackage.save(exportFile);
     }
 }

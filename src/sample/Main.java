@@ -15,7 +15,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("Views/sample.fxml"));
-        primaryStage.setTitle("App");
+        primaryStage.setTitle("DOCX Generator");
         Scene scene = new Scene(root, 600, 400);
         scene.getStylesheets().add("sample/style.css");
         primaryStage.setScene(scene);
