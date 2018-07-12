@@ -27,7 +27,7 @@ public class MainController {
     private DOCXWrapper docxWrapper;
     private FXMLLoader fxmlLoader;
 
-    private boolean needAttemptioinList = false;
+    boolean[] documentParts = new boolean[4];
 
     public interface sendWrapper {
         void getWrapper(DBWrapper wrapper);
@@ -138,7 +138,7 @@ public class MainController {
 
                 List<String> subjectDays = new ArrayList<>(Arrays.asList(days.split(",")));
                 model.visitingRegisterMonthDays = subjectDays;
-                needAttemptioinList = true;
+                documentParts[1] = true;
             }
         });
 
@@ -150,6 +150,7 @@ public class MainController {
                 if (s.getFio().equals(fio))
                     s.setTask(task);
             }
+            documentParts[2] = true;
         });
 
         done4.setOnAction(event -> {
@@ -160,6 +161,8 @@ public class MainController {
                 if (s.getFio().equals(fio))
                     s.setMasterComment(comment);
             }
+
+            documentParts[3] = true;
         });
 
         create_docx.setOnAction(event -> {
@@ -167,10 +170,19 @@ public class MainController {
             try {
                 docxWrapper = new DOCXWrapper();
                 docxWrapper.addStudentList(model);
-                if (needAttemptioinList){
+                if (documentParts[1]){
                     docxWrapper.addAttendList(model);
                 }
+                if (documentParts[2]){
+                    docxWrapper.addTaskList(model);
+                }
+                if (documentParts[3]){
+                    docxWrapper.addCommentList(model);
+                }
                 docxWrapper.saveDocument("test");
+
+                for (int i = 0; i<documentParts.length; i++) documentParts[i] = false;
+
             } catch (Exception e) {
 
             }

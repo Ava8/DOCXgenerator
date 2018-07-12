@@ -8,6 +8,7 @@ import sample.Models.DataModel;
 import sample.Models.Student;
 
 import java.io.File;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,6 +58,7 @@ public class DOCXWrapper {
         int writableWidthTwips = wordMLPackage.getDocumentModel().getSections().get(0).getPageDimensions().getWritableWidthTwips();
         int columnNumber = dataModel.visitingRegisterMonthDays.size() + 1;
         Tbl tbl = TblFactory.createTable(s_list.size(), columnNumber, writableWidthTwips/columnNumber);
+
         List<Object> rows = tbl.getContent();
 
         for (int i = 0; i < rows.size(); i++){
@@ -64,11 +66,11 @@ public class DOCXWrapper {
             Tr tr = (Tr) rows.get(i);
             List<Object> cells = tr.getContent();
             Tc td = (Tc) cells.get(0);
-            td.getContent().add(getWordObject(s_list.get(i), factory));
+            td.getContent().add(getWordObject(s_list.get(i)));
             if (i == 0){
                 for(int j = 1; j<cells.size(); j++){
                     td = (Tc) cells.get(j);
-                    td.getContent().add(getWordObject(dataModel.visitingRegisterMonthDays.get(j-1), factory));
+                    td.getContent().add(getWordObject(dataModel.visitingRegisterMonthDays.get(j-1)));
                 }
             }
         }
@@ -78,7 +80,7 @@ public class DOCXWrapper {
     }
 
     //void to convert text to word object
-    private P getWordObject(String text, ObjectFactory factory){
+    private P getWordObject(String text){
         P p = factory.createP();
         R r = factory.createR();
         Text t = factory.createText();
@@ -89,11 +91,102 @@ public class DOCXWrapper {
     }
 
     public void addTaskList(DataModel dataModel){
+        List<String> s_list = new ArrayList<>();
+        List<String> t_list = new ArrayList<>();
 
+        s_list.add("null");
+        t_list.add("null");
+
+        for (Student s:dataModel.list) {
+            s_list.add(s.getFio());
+            if (s.getTask() != null){
+                t_list.add(s.getTask());
+            } else {
+                t_list.add("-");
+            }
+        }
+
+        addNewPage();
+
+        int writableWidthTwips = wordMLPackage.getDocumentModel().getSections().get(0).getPageDimensions().getWritableWidthTwips();
+        int columnNumber = 4;
+        Tbl tbl = TblFactory.createTable(s_list.size(), columnNumber, writableWidthTwips/columnNumber);
+        List<Object> rows = tbl.getContent();
+
+        for (int i = 0; i < rows.size(); i++){
+
+            Tr tr = (Tr) rows.get(i);
+            List<Object> cells = tr.getContent();
+
+            Tc studentCell = (Tc) cells.get(0);
+            Tc taskCell = (Tc) cells.get(1);
+            Tc doneCell = (Tc) cells.get(2);
+            Tc dateCell = (Tc) cells.get(3);
+
+            if (i == 0){
+                studentCell.getContent().add(getWordObject("ФИО"));
+                taskCell.getContent().add(getWordObject("Задание"));
+                doneCell.getContent().add(getWordObject("Выполнено"));
+                dateCell.getContent().add(getWordObject("Дата"));
+            } else {
+                studentCell.getContent().add(getWordObject(s_list.get(i)));
+                taskCell.getContent().add(getWordObject(t_list.get(i)));
+            }
+        }
+        wordMLPackage.getMainDocumentPart().addObject(tbl);
+        firstPage = false;
     }
 
     public void addCommentList(DataModel dataModel){
+        List<String> s_list = new ArrayList<>();
+        List<String> c_list = new ArrayList<>();
 
+        s_list.add("null");
+        c_list.add("null");
+
+        for (Student s:dataModel.list) {
+            s_list.add(s.getFio());
+            if (s.getTask() != null){
+                c_list.add(s.getMasterComment());
+            } else {
+                c_list.add("-");
+            }
+        }
+
+        addNewPage();
+
+        int writableWidthTwips = wordMLPackage.getDocumentModel().getSections().get(0).getPageDimensions().getWritableWidthTwips();
+        int columnNumber = 2;
+        Tbl tbl = TblFactory.createTable(s_list.size(), columnNumber, writableWidthTwips/columnNumber);
+        List<Object> rows = tbl.getContent();
+
+        for (int i = 0; i < rows.size(); i++){
+
+            Tr tr = (Tr) rows.get(i);
+            List<Object> cells = tr.getContent();
+
+            Tc studentCell = (Tc) cells.get(0);
+            Tc commentCell = (Tc) cells.get(1);
+
+            if (i == 0){
+                studentCell.getContent().add(getWordObject("ФИО"));
+                commentCell.getContent().add(getWordObject("Коментарий"));
+            } else {
+                studentCell.getContent().add(getWordObject(s_list.get(i)));
+                commentCell.getContent().add(getWordObject(c_list.get(i)));
+            }
+        }
+        wordMLPackage.getMainDocumentPart().addObject(tbl);
+        firstPage = false;
+    }
+
+    private void setCellWidth(Tc tableCell, int width) {
+        TcPr tableCellProperties = new TcPr();
+        TblWidth tableWidth = new TblWidth();
+        tableWidth.setType("dxa");
+        tableWidth.setW(BigInteger.valueOf(width));
+        tableCellProperties.setTcW(tableWidth);
+        tableCell.setTcPr(tableCellProperties);
     }
 
     public void saveDocument(String path) throws Exception{

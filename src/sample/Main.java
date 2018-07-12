@@ -19,15 +19,6 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.setResizable(false);
         primaryStage.show();
-        primaryStage.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> ov, Boolean onHidden, Boolean onShown)
-            {
-                if (onShown){
-                    System.out.println("works");
-                }
-            }
-        });
         BasicConfigurator.configure();
     }
 
