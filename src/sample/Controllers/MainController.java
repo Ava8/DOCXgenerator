@@ -192,12 +192,12 @@ public class MainController {
                     if (documentParts[2]){
                         docxWrapper.addCommentList(model);
                     }
-                    docxWrapper.saveDocument(System.getProperty("user.dir") + "/test.doc");
+                    docxWrapper.saveDocument(System.getProperty("user.dir") + "/List.docx");
 
                     for (int i = 0; i<documentParts.length; i++) documentParts[i] = false;
                 }
             } catch (Exception e) {
-
+                create_docx.setText(e.toString());
             }
         });
     }
