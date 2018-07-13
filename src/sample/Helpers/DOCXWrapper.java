@@ -146,7 +146,7 @@ public class DOCXWrapper {
 
         for (Student s:dataModel.list) {
             s_list.add(s.getFio());
-            if (s.getTask() != null){
+            if (s.getMasterComment() != null){
                 c_list.add(s.getMasterComment());
             } else {
                 c_list.add("-");
