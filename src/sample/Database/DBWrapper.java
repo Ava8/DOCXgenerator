@@ -3,6 +3,7 @@ package sample.Database;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.stmt.QueryBuilder;
+import com.j256.ormlite.stmt.UpdateBuilder;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
@@ -52,6 +53,14 @@ public class DBWrapper {
         DeleteBuilder<GroupModel, String> deleteBuilder = groupDAO.deleteBuilder();
         deleteBuilder.where().eq("ID", id);
         deleteBuilder.delete();
+    }
+
+    public void editField(int id, String FIO, String group) throws  Exception{
+        UpdateBuilder<GroupModel, String> updateBuilder = groupDAO.updateBuilder();
+        updateBuilder.where().eq("ID", id);
+        updateBuilder.updateColumnValue("FIO", FIO);
+        updateBuilder.updateColumnValue("GroupName", group);
+        updateBuilder.update();
     }
 
     public List<GroupModel> getAllStudents() throws Exception{

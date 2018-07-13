@@ -61,6 +61,15 @@ public class ListController implements MainController.sendWrapper {
                 System.out.println("ERROR "+ e.toString());
             }
         });
+        change_button.setOnAction(event -> {
+            try {
+                wrapper.editField(group.get(listView.getSelectionModel().getSelectedIndex()).getId(), fio_field.getText(), group_field.getText());
+                configureListView();
+            } catch (Exception e){
+
+            }
+
+        });
     }
 
     private void configureListView(){
