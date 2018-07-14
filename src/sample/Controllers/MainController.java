@@ -152,10 +152,13 @@ public class MainController {
             String task = task_field.getText();
             String fio = getFIO_forTask.getValue();
 
-            for (Student s: model.list) {
-                if (s.getFio().equals(fio))
-                    s.setTask(task);
+            if (!task.equals("") & !fio.equals("")){
+                for (Student s: model.list) {
+                    if (s.getFio().equals(fio))
+                        s.setTask(task);
+                }
             }
+
             documentParts[1] = true;
         });
 
@@ -163,9 +166,11 @@ public class MainController {
             String comment = comment_field.getText();
             String fio = getFIO_forComment.getValue();
 
-            for (Student s: model.list) {
-                if (s.getFio().equals(fio))
-                    s.setMasterComment(comment);
+            if (!comment.equals("") & !fio.equals("")){
+                for (Student s: model.list) {
+                    if (s.getFio().equals(fio))
+                        s.setMasterComment(comment);
+                }
             }
 
             documentParts[2] = true;
