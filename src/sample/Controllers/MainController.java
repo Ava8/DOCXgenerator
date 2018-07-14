@@ -2,6 +2,9 @@ package sample.Controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
@@ -182,30 +185,51 @@ public class MainController {
                 if (!list_checkbox.isSelected() & !documentParts[0] & !documentParts[1] & !documentParts[2] ){
                     //TODO: dialog with error
                 } else {
-                    docxWrapper = new DOCXWrapper();
-
-                    if (list_checkbox.isSelected()){
-                        docxWrapper.addStudentList(model);
-                    }
-
-                    if (documentParts[0]){
-                        docxWrapper.addAttendList(model);
-                    }
-                    if (documentParts[1]){
-                        docxWrapper.addTaskList(model);
-                    }
-                    if (documentParts[2]){
-                        docxWrapper.addCommentList(model);
-                    }
-                    docxWrapper.saveDocument(System.getProperty("user.dir") + "/List.docx");
-
-                    for (int i = 0; i<documentParts.length; i++) documentParts[i] = false;
+                    saveDocument.setOnSucceeded(event1 -> {
+                        create_docx.setDisable(false);
+                        create_docx.setText("Создать документ");
+                    });
+                    saveDocument.setOnFailed(event1 -> {
+                        create_docx.setDisable(false);
+                        create_docx.setText("Создать документ");
+                        //TODO: add error dialog
+                    });
+                    create_docx.setText("Документ сохраняется");
+                    create_docx.setDisable(true);
+                    new Thread(saveDocument).start();
                 }
             } catch (Exception e) {
-                create_docx.setText(e.toString());
+                System.out.println(e.toString());
             }
         });
     }
+
+    private Task<Integer> saveDocument = new Task<Integer>(){
+            @Override
+            protected Integer call() throws Exception {
+                docxWrapper = new DOCXWrapper();
+
+                if (list_checkbox.isSelected()){
+                    docxWrapper.addStudentList(model);
+                }
+
+                if (documentParts[0]){
+                    docxWrapper.addAttendList(model);
+                }
+                if (documentParts[1]){
+                    docxWrapper.addTaskList(model);
+                }
+                if (documentParts[2]){
+                    docxWrapper.addCommentList(model);
+                }
+
+                docxWrapper.saveDocument(System.getProperty("user.dir") + "/List.docx");
+
+                for (int i = 0; i<documentParts.length; i++) documentParts[i] = false;
+
+                return 1;
+            }
+        };
 
     private void updateWindowInfo(){
         updateStudentsList();
@@ -228,3 +252,5 @@ public class MainController {
         }catch (Exception r){ }
     }
 }
+
+
