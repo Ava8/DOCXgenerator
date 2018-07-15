@@ -102,9 +102,6 @@ public class MainController {
     private CheckBox docx_checkbox;
 
     @FXML
-    private Button choose_folder;
-
-    @FXML
     private TextField doc_name_field;
 
     @FXML
@@ -201,36 +198,33 @@ public class MainController {
             documentParts[2] = true;
         });
 
-        choose_folder.setOnAction(event -> {
-            DirectoryChooser directoryChooser = new DirectoryChooser();
-            File selectedDirectory = directoryChooser.showDialog(new Stage());
-            if (selectedDirectory != null){
-                path = selectedDirectory.getAbsolutePath() + "/";
-                //path = path.replace('\\', '/');
-                System.out.println();
-            }
-        });
-
         create_docx.setOnAction(event -> {
             //TODO: add opportunity to choose file save directory & file name
             try {
                 if (!list_checkbox.isSelected() & !documentParts[0] & !documentParts[1] & !documentParts[2] ){
                     //TODO: dialog with error
                 } else {
-                    final Task<Void> save = saveDocument();
+                    DirectoryChooser directoryChooser = new DirectoryChooser();
+                    File selectedDirectory = directoryChooser.showDialog(new Stage());
+                    if (selectedDirectory != null){
+                        path = selectedDirectory.getAbsolutePath() + "/";
+                        final Task<Void> save = saveDocument();
 
-                    save.setOnSucceeded(event1 -> {
-                        create_docx.setDisable(false);
-                        create_docx.setText("Создать документ");
-                    });
-                    save.setOnFailed(event1 -> {
-                        create_docx.setDisable(false);
-                        create_docx.setText("Создать документ");
-                        //TODO: add error dialog
-                    });
-                    create_docx.setText("Документ сохраняется");
-                    create_docx.setDisable(true);
-                    new Thread(save).start();
+                        save.setOnSucceeded(event1 -> {
+                            create_docx.setDisable(false);
+                            create_docx.setText("Создать документ");
+                        });
+                        save.setOnFailed(event1 -> {
+                            create_docx.setDisable(false);
+                            create_docx.setText("Создать документ");
+                            System.out.println("Произошла ошибка");
+                            //TODO: add error dialog
+                        });
+                        create_docx.setText("Документ сохраняется");
+                        create_docx.setDisable(true);
+                        new Thread(save).start();
+                        //path = path.replace('\\', '/');
+                    }
                 }
             } catch (Exception e) {
                 System.out.println(e.toString());
