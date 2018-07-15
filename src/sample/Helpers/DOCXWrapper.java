@@ -170,7 +170,7 @@ public class DOCXWrapper {
 
             if (i == 0){
                 studentCell.getContent().add(getWordObject("ФИО"));
-                commentCell.getContent().add(getWordObject("Коментарий"));
+                commentCell.getContent().add(getWordObject("Комментарий"));
             } else {
                 studentCell.getContent().add(getWordObject(s_list.get(i)));
                 commentCell.getContent().add(getWordObject(c_list.get(i)));
@@ -178,15 +178,6 @@ public class DOCXWrapper {
         }
         wordMLPackage.getMainDocumentPart().addObject(tbl);
         firstPage = false;
-    }
-
-    private void setCellWidth(Tc tableCell, int width) {
-        TcPr tableCellProperties = new TcPr();
-        TblWidth tableWidth = new TblWidth();
-        tableWidth.setType("dxa");
-        tableWidth.setW(BigInteger.valueOf(width));
-        tableCellProperties.setTcW(tableWidth);
-        tableCell.setTcPr(tableCellProperties);
     }
 
     public void saveDocument(String path) throws Exception{

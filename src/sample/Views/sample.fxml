@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<JFXTabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../style.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.MainController">
+<JFXTabPane fx:id="main_tab_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../style.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.MainController">
   <tabs>
     <Tab text="лист 1">
       <content>
@@ -95,7 +95,7 @@
       </Tab>
       <Tab text="создать документ">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #2E3348;">
+            <AnchorPane fx:id="create_doc_pane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #2E3348;">
                <children>
                   <JFXButton fx:id="create_docx" layoutX="120.0" layoutY="181.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="361.0" text="создать документ" />
                   <JFXCheckBox fx:id="list_checkbox" checkedColor="#ffff8d" layoutX="120.0" layoutY="145.0" text="Включить в документ список студентов" textFill="WHITE">

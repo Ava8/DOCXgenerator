@@ -16,7 +16,6 @@ public class DBWrapper {
     // default wrapper constructor with initialization of db connection
     public DBWrapper(){
         try{
-            //TODO: check if it's the correct APP RUNTIME FOLDER
             String dburl = "jdbc:sqlite:" + System.getProperty("user.dir") + "/student.db";
             connectionSource = new JdbcConnectionSource(dburl);
             groupDAO = new GroupDAO(connectionSource, GroupModel.class);

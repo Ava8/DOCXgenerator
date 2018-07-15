@@ -1,5 +1,10 @@
 package sample.Controllers;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
@@ -9,6 +14,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 import javafx.stage.*;
 import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
 import sample.Helpers.DOCXWrapper;
@@ -36,6 +44,9 @@ public class MainController {
     public interface sendWrapper {
         void getWrapper(DBWrapper wrapper);
     }
+
+    @FXML
+    private AnchorPane create_doc_pane;
 
     // list 1 elements
 
@@ -100,7 +111,7 @@ public class MainController {
 
     @FXML
     private  void initialize() {
-        
+
         getList.setDisable(true);
         done1.setDisable(true);
 
@@ -117,7 +128,6 @@ public class MainController {
             String fio = this.fio_field.getText();
             String group = this.group_field.getText();
 
-            //TODO: get students count from data base
             if (!fio.equals("") & !group.equals("")) {
                 model.list.add(new Student(fio, group));
                 dbWrapper.setField(new GroupModel(fio, group));
@@ -164,38 +174,40 @@ public class MainController {
         });
 
         done3.setOnAction(event -> {
+
             String task = task_field.getText();
             String fio = getFIO_forTask.getValue();
 
-            if (!task.equals("") & !fio.equals("")){
+            if (!(task.equals("") | fio.equals(""))){
                 for (Student s: model.list) {
                     if (s.getFio().equals(fio))
                         s.setTask(task);
                 }
+                documentParts[1] = true;
             }
-
-            documentParts[1] = true;
         });
 
         done4.setOnAction(event -> {
             String comment = comment_field.getText();
             String fio = getFIO_forComment.getValue();
 
-            if (!comment.equals("") & !fio.equals("")){
+            if (!(comment.equals("") | fio.equals(""))){
                 for (Student s: model.list) {
                     if (s.getFio().equals(fio))
                         s.setMasterComment(comment);
                 }
+                documentParts[2] = true;
             }
-
-            documentParts[2] = true;
         });
 
         create_docx.setOnAction(event -> {
-            //TODO: add opportunity to choose file save directory & file name
             try {
                 if (!list_checkbox.isSelected() & !documentParts[0] & !documentParts[1] & !documentParts[2] ){
-                    //TODO: dialog with error
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Ошибка");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Произошла ошибка при создании документа \nУбедитесь, что была внесена какая либо информация для сохранения в документ");
+                    alert.showAndWait();
                 } else {
                     FileChooser fileChooser = new FileChooser();
                     FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("DOC files", "*.docx", "*.doc");
@@ -218,7 +230,12 @@ public class MainController {
                             create_docx.setDisable(false);
                             create_docx.setText("Создать документ");
                             System.out.println("Произошла ошибка");
-                            //TODO: add error dialog
+
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setTitle("Ошибка");
+                            alert.setHeaderText(null);
+                            alert.setContentText("Произошла ошибка при создании документа \nУбедитесь, что сохраняемый файл не открыт в другой программе");
+                            alert.showAndWait();
                         });
                         create_docx.setText("Документ сохраняется");
                         create_docx.setDisable(true);
@@ -274,6 +291,12 @@ public class MainController {
         ObservableList<String> students_list = FXCollections.observableArrayList(s_list);
         getFIO_forTask.setItems(students_list);
         getFIO_forComment.setItems(students_list);
+
+        if (students_list.size() != 0){
+            getFIO_forTask.getSelectionModel().selectFirst();
+            getFIO_forComment.getSelectionModel().selectFirst();
+        }
+
         student_count.setText(String.valueOf(s_list.size()));
     }
 

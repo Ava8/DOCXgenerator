@@ -39,7 +39,6 @@ public class ListController implements MainController.sendWrapper {
     }
 
     public void initialize() {
-        // TODO: add funcs for edit and delete button
         listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
