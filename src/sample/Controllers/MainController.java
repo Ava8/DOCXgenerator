@@ -99,15 +99,8 @@ public class MainController {
     private CheckBox list_checkbox;
 
     @FXML
-    private CheckBox docx_checkbox;
-
-    @FXML
-    private TextField doc_name_field;
-
-    @FXML
     private  void initialize() {
-
-        doc_name_field.setText("List");
+        
         getList.setDisable(true);
         done1.setDisable(true);
 
@@ -204,11 +197,18 @@ public class MainController {
                 if (!list_checkbox.isSelected() & !documentParts[0] & !documentParts[1] & !documentParts[2] ){
                     //TODO: dialog with error
                 } else {
-                    DirectoryChooser directoryChooser = new DirectoryChooser();
-                    File selectedDirectory = directoryChooser.showDialog(new Stage());
-                    if (selectedDirectory != null){
-                        path = selectedDirectory.getAbsolutePath() + "/";
+                    FileChooser fileChooser = new FileChooser();
+                    FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("DOC files", "*.docx", "*.doc");
+                    fileChooser.getExtensionFilters().addAll(
+                            new FileChooser.ExtensionFilter("docx", "*.docx"),
+                            new FileChooser.ExtensionFilter("doc", "*.doc")
+                    );
+                    File file = fileChooser.showSaveDialog(new Stage());
+                    if (file != null){
+                        path = file.getAbsolutePath() + "/";
                         final Task<Void> save = saveDocument();
+
+                        path = file.getAbsolutePath();
 
                         save.setOnSucceeded(event1 -> {
                             create_docx.setDisable(false);
@@ -223,7 +223,6 @@ public class MainController {
                         create_docx.setText("Документ сохраняется");
                         create_docx.setDisable(true);
                         new Thread(save).start();
-                        //path = path.replace('\\', '/');
                     }
                 }
             } catch (Exception e) {
@@ -252,14 +251,7 @@ public class MainController {
                     docxWrapper.addCommentList(model);
                 }
 
-                String name = doc_name_field.getText();
-                if (docx_checkbox.isSelected()){
-                    name += ".docx";
-                } else {
-                    name += ".doc";
-                }
-
-                docxWrapper.saveDocument(path, name);
+                docxWrapper.saveDocument(path);
 
                 for (int i = 0; i<documentParts.length; i++) documentParts[i] = false;
                 return null;
