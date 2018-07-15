@@ -38,7 +38,7 @@ public class DOCXWrapper {
     public void addStudentList(DataModel dataModel){
         addNewPage();
         for (Student s : dataModel.list) {
-            wordMLPackage.getMainDocumentPart().addParagraphOfText("ФИО: " + s.getFio() + " группа: " + s.getGroup() + "\n");
+            wordMLPackage.getMainDocumentPart().addParagraphOfText(s.getFio() + " группа: " + s.getGroup() + "\n");
             firstPage = false;
         }
     }
