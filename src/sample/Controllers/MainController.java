@@ -1,24 +1,13 @@
 package sample.Controllers;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDialog;
-import com.jfoenix.controls.JFXDialogLayout;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
-import javafx.concurrent.WorkerStateEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.text.Text;
 import javafx.stage.*;
-import org.docx4j.openpackaging.packages.WordprocessingMLPackage;
 import sample.Helpers.DOCXWrapper;
 import sample.Main;
 import sample.Models.DataModel;
@@ -44,9 +33,6 @@ public class MainController {
     public interface sendWrapper {
         void getWrapper(DBWrapper wrapper);
     }
-
-    @FXML
-    private AnchorPane create_doc_pane;
 
     // list 1 elements
 
@@ -132,7 +118,6 @@ public class MainController {
                 model.list.add(new Student(fio, group));
                 dbWrapper.setField(new GroupModel(fio, group));
                 updateWindowInfo();
-                //((sendWrapper) fxmlLoader.getController()).getWrapper(dbWrapper);
             }
         });
 
@@ -146,7 +131,7 @@ public class MainController {
                 stage.setTitle("List");
                 stage.setScene(scene);
                 ((sendWrapper) fxmlLoader.getController()).getWrapper(dbWrapper);
-                ((Stage)((Node)event.getSource()).getScene().getWindow()).hide();
+                (((Node)event.getSource()).getScene().getWindow()).hide();
                 stage.show();
                 stage.setOnCloseRequest(e -> {
                     ((Stage)((Node)event.getSource()).getScene().getWindow()).show();
@@ -210,7 +195,6 @@ public class MainController {
                     alert.showAndWait();
                 } else {
                     FileChooser fileChooser = new FileChooser();
-                    FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("DOC files", "*.docx", "*.doc");
                     fileChooser.getExtensionFilters().addAll(
                             new FileChooser.ExtensionFilter("docx", "*.docx"),
                             new FileChooser.ExtensionFilter("doc", "*.doc")
@@ -272,9 +256,7 @@ public class MainController {
 
                 for (int i = 0; i<documentParts.length; i++) documentParts[i] = false;
                 return null;
-
             }
-
         };
     }
 
