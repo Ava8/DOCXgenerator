@@ -18,6 +18,7 @@ import sample.Database.DBWrapper;
 import sample.Database.GroupModel;
 import sample.Models.Student;
 
+import java.io.File;
 import java.util.*;
 
 import java.io.IOException;
@@ -25,10 +26,10 @@ import java.io.IOException;
 public class MainController {
 
     private DataModel model = new DataModel();
-    private DBWrapper dbWrapper = new DBWrapper();
+    private DBWrapper dbWrapper;
     private List<String> s_list = new ArrayList<>();
-    private DOCXWrapper docxWrapper;
     private FXMLLoader fxmlLoader;
+    private String path = System.getProperty("user.dir") + "/";
 
     private boolean[] documentParts = new boolean[3];
 
@@ -98,8 +99,29 @@ public class MainController {
     private CheckBox list_checkbox;
 
     @FXML
+    private CheckBox docx_checkbox;
+
+    @FXML
+    private Button choose_folder;
+
+    @FXML
+    private TextField doc_name_field;
+
+    @FXML
     private  void initialize() {
-        updateWindowInfo();
+
+        doc_name_field.setText("List");
+        getList.setDisable(true);
+        done1.setDisable(true);
+
+        dbConnect.setOnSucceeded(event -> {
+            getList.setDisable(false);
+            done1.setDisable(false);
+            updateWindowInfo();
+        });
+
+        new Thread(dbConnect).start();
+
         done1.setOnAction(event -> {
 
             String fio = this.fio_field.getText();
@@ -179,24 +201,36 @@ public class MainController {
             documentParts[2] = true;
         });
 
+        choose_folder.setOnAction(event -> {
+            DirectoryChooser directoryChooser = new DirectoryChooser();
+            File selectedDirectory = directoryChooser.showDialog(new Stage());
+            if (selectedDirectory != null){
+                path = selectedDirectory.getAbsolutePath() + "/";
+                //path = path.replace('\\', '/');
+                System.out.println();
+            }
+        });
+
         create_docx.setOnAction(event -> {
             //TODO: add opportunity to choose file save directory & file name
             try {
                 if (!list_checkbox.isSelected() & !documentParts[0] & !documentParts[1] & !documentParts[2] ){
                     //TODO: dialog with error
                 } else {
-                    saveDocument.setOnSucceeded(event1 -> {
+                    final Task<Void> save = saveDocument();
+
+                    save.setOnSucceeded(event1 -> {
                         create_docx.setDisable(false);
                         create_docx.setText("Создать документ");
                     });
-                    saveDocument.setOnFailed(event1 -> {
+                    save.setOnFailed(event1 -> {
                         create_docx.setDisable(false);
                         create_docx.setText("Создать документ");
                         //TODO: add error dialog
                     });
                     create_docx.setText("Документ сохраняется");
                     create_docx.setDisable(true);
-                    new Thread(saveDocument).start();
+                    new Thread(save).start();
                 }
             } catch (Exception e) {
                 System.out.println(e.toString());
@@ -204,10 +238,11 @@ public class MainController {
         });
     }
 
-    private Task<Integer> saveDocument = new Task<Integer>(){
+    private Task<Void> saveDocument() {
+        return new Task<Void>(){
             @Override
-            protected Integer call() throws Exception {
-                docxWrapper = new DOCXWrapper();
+            protected Void call() throws Exception {
+                DOCXWrapper docxWrapper = new DOCXWrapper();
 
                 if (list_checkbox.isSelected()){
                     docxWrapper.addStudentList(model);
@@ -223,13 +258,30 @@ public class MainController {
                     docxWrapper.addCommentList(model);
                 }
 
-                docxWrapper.saveDocument(System.getProperty("user.dir") + "/List.docx");
+                String name = doc_name_field.getText();
+                if (docx_checkbox.isSelected()){
+                    name += ".docx";
+                } else {
+                    name += ".doc";
+                }
+
+                docxWrapper.saveDocument(path, name);
 
                 for (int i = 0; i<documentParts.length; i++) documentParts[i] = false;
+                return null;
 
-                return 1;
             }
+
         };
+    }
+
+    private Task<Void> dbConnect = new Task<Void>() {
+        @Override
+        protected Void call() throws Exception {
+            dbWrapper = new DBWrapper();
+            return null;
+        }
+    };
 
     private void updateWindowInfo(){
         updateStudentsList();

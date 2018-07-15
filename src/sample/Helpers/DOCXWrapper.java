@@ -189,8 +189,8 @@ public class DOCXWrapper {
         tableCell.setTcPr(tableCellProperties);
     }
 
-    public void saveDocument(String path) throws Exception{
-        File exportFile = new File(path);
+    public void saveDocument(String path, String name) throws Exception{
+        File exportFile = new File(path + name);
         wordMLPackage.save(exportFile);
     }
 }
